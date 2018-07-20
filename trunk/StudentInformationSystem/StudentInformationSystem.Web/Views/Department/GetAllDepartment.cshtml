@@ -1,0 +1,64 @@
+﻿@model IEnumerable<StudentInformationSystem.Entities.ViewModels.CollegeModel>
+
+@{
+    ViewBag.Title = "GetAllDepartment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Departments </h2>
+<p>
+</p>
+<table  class="table table-condensed table-bordered table-striped table-hover" style="text-align:center">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.DepartmentCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DepartmentName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TotalSem)
+        </th>
+        <th></th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepartmentCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DepartmentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TotalSem)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditDepartment", new {  id = item.DepartmentID }, new { @class = "btn btn-default", style = "text-decoration:none"  })
+            </td>
+            <td>
+                @Html.ActionLink("Delete", "DeleteDepartment", new { id = item.DepartmentID ,clgid=item.CollegeID }, new { @class = "btn btn-default", style = "text-decoration:none" , @OnClick="return confirm('Are you sure you want to delete this Department')"})
+            </td>
+     </tr>
+    }
+
+</table>
+
+    <div class="row">
+         @Html.ActionLink("Back", "GetDepartment", "Department","", new { @class = "btn btn-default", @id = "sisButton", style = "text-decoration:none"  })
+                             </div>
+<script>
+    $(document).ready(function () {
+        var toastString = '@(TempData["toast"])';
+        debugger
+        if (toastString != "") {
+            displayToastr(toastString);
+        }
+    });
+    function displayToastr(toastString) {
+        toastr.success(toastString)
+    }
+</script>

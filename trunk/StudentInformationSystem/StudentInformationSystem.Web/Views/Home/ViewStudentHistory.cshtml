@@ -1,0 +1,90 @@
+﻿@model IEnumerable<StudentInformationSystem.Entities.ViewModels.StudentHistoryModel>
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+@{
+    ViewBag.Title = "ViewStudentHistory";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>@ViewBag.Name's History</h2>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+<table class="table table-condensed table-bordered table-striped table-hover" style="text-align:center">
+    <tr>
+       @* <th>
+            @Html.DisplayNameFor(model => model.StudentID)
+        </th>*@
+     
+         <th>
+            @Html.DisplayNameFor(model => model.CollegeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DepartmentName)
+        </th>
+         <th>
+            @Html.DisplayNameFor(model => model.Semester)
+        </th>
+         <th>
+            @Html.DisplayNameFor(model => model.DateOfJoining)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.StudentHistoryID)
+        </th>*@
+       
+       
+        
+       
+        @*<th></th>*@
+      
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+       @* <td>
+            @Html.DisplayFor(modelItem => item.StudentID)
+        </td>*@
+      
+         <td>
+            @Html.DisplayFor(modelItem => item.CollegeName)
+        </td>
+         <td>
+            @Html.DisplayFor(modelItem => item.DepartmentName)
+        </td>
+         <td>
+            @Html.DisplayFor(modelItem => item.Semester)
+        </td>
+         <td>
+            @Html.DisplayFor(modelItem => item.DateOfJoining)
+        </td>
+       @* <td>
+            @Html.DisplayFor(modelItem => item.StudentHistoryID)
+        </td>*@
+       
+       
+       
+       
+      
+        @*<td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>*@
+    </tr>
+}
+
+</table>
+
+<div class="row">
+            <div class="col-3">
+                <div class="form-group">        
+                    <div class="col-sm-offset-2 col-sm-10">
+                        @*<button type="submit" class="btn btn-default">Save Student</button>*@
+                        @Html.ActionLink("Back", "ViewStudentInfo", new { id= Model.First().StudentID }, new { @class="btn btn-default" })
+                    </div>
+                </div>
+            </div>
+        </div>
+ 

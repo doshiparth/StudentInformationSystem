@@ -1,0 +1,265 @@
+﻿@model StudentInformationSystem.Entities.ViewModels.StudentModel
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "AddStudentInfo";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .required:after {
+        content: " *";
+        font-weight: bold;
+        font-size: large;
+        color: red;
+    }
+</style>
+@*<h2>Edit Student Details</h2>*@
+
+<div style="padding:30px">
+    <div class="page-header">
+        <div class="row">
+            <div class="col-sm-6" style="padding-bottom:10px">
+                <div class="col-sm-12">
+                    <h1>Add Student Information<span class="glyphicon glyphicon-pencil"></span></h1>
+                </div>
+            </div>
+        </div>
+    </div>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>StudentModel</legend>
+
+        @*<div class="editor-label">
+            @Html.LabelFor(model => model.StudentID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.StudentID)
+            @Html.ValidationMessageFor(model => model.StudentID)
+        </div>*@
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.StudentCode, htmlAttributes: new { @class = "control-label required"})
+        </div>
+        <div class="editor-field col-md-6">
+            @Html.TextBoxFor(model => model.StudentCode, new { @class = "form-control", title = "Student Code can be a Number or a Character", required = "required", maxlength = "20", type = "text", pattern="[a-zA-Z0-9]+" })
+            @Html.ValidationMessageFor(model => model.StudentCode)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label required" })
+        </div>
+        <div class="editor-field col-md-6">
+            @Html.TextBoxFor(model => model.FirstName, new { @class = "form-control", title = "Enter the Student's First Name", required = "required", type = "text", maxlength = "25"})
+            @Html.ValidationMessageFor(model => model.FirstName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.LastName, htmlAttributes: new { @class = "control-label required" })
+        </div>
+        <div class="editor-field col-md-6">
+            @Html.TextBoxFor(model => model.LastName, new { @class = "form-control", title = "Enter the Student's Last Name", required = "required", type = "text", maxlength = "25"})
+            @Html.ValidationMessageFor(model => model.LastName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ContactNumber, htmlAttributes: new { @class = "control-label required" })
+        </div>
+        <div class="editor-field col-md-6">
+            @Html.TextBoxFor(model => model.ContactNumber, new { @class = "form-control", title = "Enter the Student's Contact Number", required = "required", type = "tel", pattern = @"^([0-9]{10})$"})
+            @Html.ValidationMessageFor(model => model.ContactNumber)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EmailAddress, htmlAttributes: new { @class = "control-label required" })
+        </div>
+        <div class="editor-field col-md-6">
+            @Html.TextBoxFor(model => model.EmailAddress, new { @class = "form-control", title = "Enter the Student's Email Address", required = "required", type = "email", maxlength = "100"})
+            @Html.ValidationMessageFor(model => model.EmailAddress)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DateOfBirth, htmlAttributes: new { @class = "control-label required" })
+        </div>
+        <div class="editor-field col-md-6">
+            @Html.TextBoxFor(model => model.DateOfBirth, "{0:yyyy-MM-dd}", new { @value = @DateTime.Today, @class = "form-control", required = "required", type = "date", min = "1950-12-31", max = "2018-06-13"})
+            @Html.ValidationMessageFor(model => model.DateOfBirth)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Address)
+        </div>
+        <div class="editor-field col-md-6">
+            @Html.TextAreaFor(model => model.Address, new { @rows = 5, @columns = 2, title = "Enter the Student's Address", required = "required"})
+            @Html.ValidationMessageFor(model => model.Address)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.StateName, htmlAttributes: new { @class = "control-label required" })
+        </div>
+        <div class="editor-field col-md-6">
+            @Html.DropDownListFor(model => model.StateName, new SelectList(StudentInformationSystem.Entities.HelperModel.State, "Value", "DisplayName"), "Select State" , new { @class = "form-control chosen-select-deselect", required = "required", title = "Select the Student's State", @id="stateid" })
+            @Html.ValidationMessageFor(model => model.StateName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CityName, htmlAttributes: new { @class = "control-label required" })
+        </div>
+        <div class="editor-field col-md-6">
+            @Html.DropDownListFor(model => model.CityID, new SelectList(StudentInformationSystem.Entities.HelperModel.City, "Value", "DisplayName"), "Select City" , new { @class = "form-control chosen-select-deselect", required = "required", title = "Select the Student's City", @id="cityid"  })
+            @*@Html.EditorFor(model => model.CityName)*@
+            @Html.ValidationMessageFor(model => model.CityName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CollegeName, htmlAttributes: new { @class = "control-label required" })
+        </div>
+        <div class="editor-field col-md-6">
+            @Html.DropDownListFor(model => model.CollegeID, new SelectList(StudentInformationSystem.Entities.HelperModel.College, "Value", "DisplayName"), "Select College" , new { @class = "form-control chosen-select-deselect", required = "required", title = "Select the Student's College", @id="collegeid" })
+            @*@Html.EditorFor(model => model.CollegeName)*@
+            @Html.ValidationMessageFor(model => model.CollegeName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DepartmentName, htmlAttributes: new { @class = "control-label required" })
+        </div>
+        <div class="editor-field col-md-6">
+            @Html.DropDownListFor(model => model.DepartmentID, new SelectList(StudentInformationSystem.Entities.HelperModel.Department, "Value", "DisplayName"), "Select Department" , new { @class = "form-control chosen-select-deselect", required = "required", title = "Select the Student's Department", @id="departmentid" })
+            @*@Html.EditorFor(model => model.DepartmentName)*@
+            @Html.ValidationMessageFor(model => model.DepartmentName)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Semester, htmlAttributes: new { @class = "control-label required" })
+        </div>
+        <div class="editor-field col-md-6">
+            @Html.TextBoxFor(model => model.Semester, new { @class = "form-control", required = "required", title = "Select the Student's Current Semester", type = "range", min = 1, max = 10})
+            @Html.ValidationMessageFor(model => model.Semester)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DateOfJoining, htmlAttributes: new { @class = "control-label required" })
+        </div>
+        <div class="editor-field col-md-6">
+            @Html.TextBoxFor(model => model.DateOfJoining, "{0:yyyy-MM-dd}", new { @class = "form-control", required = "required", @type = "date", min = "1980-12-31", max = "2018-06-13"})
+            @Html.ValidationMessageFor(model => model.DateOfJoining)
+        </div>
+
+         <div class="row">
+            <div class="col-3">
+                <div class="form-group">        
+                    <div class="col-sm-offset-2 col-sm-10">
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+  <div class="row">&nbsp&nbsp&nbsp&nbsp
+                        <button type="submit" class="btn btn-default">Create</button>
+                         @Html.ActionLink("Back", "StudentInfo", "", new { @class = "btn btn-default" })
+      @*@Html.ValidationMessage("AddFailedError")*@
+        </div>
+    </fieldset>
+}
+</div>
+<script src="~/Scripts/jquery-3.0.0.min.js"></script>
+
+<script>
+    $(document).ready(function () {
+        var toastString = '@(TempData["toastError"])';
+        debugger
+        if (toastString != "") {
+            displayToastr(toastString);
+        }
+
+    });
+
+    function displayToastr(toastString) {
+        //alert('yes');
+        // Display a info toast, with no title
+        //console.log("edited");
+        //toastr.info(temp)
+
+        // Display a warning toast, with no title
+        toastr.warning(toastString)
+
+        // Display a success toast, with a title
+        //toastr.success(toastString)
+
+        // Display an error toast, with a title
+        //toastr.error('An error occured in the solution!', 'Please contact with system administrator.')
+    }
+</script>
+
+@*disable city dropdown*@
+<script >
+        $("#cityid").attr("disabled",true)
+</script>
+@*enable city dropdown when item from city dropdown selected*@
+<script>
+    $('#stateid').change(function () {
+        $("#cityid").removeAttr("disabled");
+    })
+    </script>
+
+@*disable department dropdown*@
+<script >
+    $("#departmentid").attr("disabled", true)
+</script>
+@*enable department dropdown when item from college dropdown selected*@
+<script>
+    $('#collegeid').change(function () {
+        $("#departmentid").removeAttr("disabled");
+    })
+    </script>
+
+@* populate values of city dropdown list when state dropdown is selected*@
+<script>
+    $('#stateid').change(function () {
+        var SelectedState = $('#stateid option:selected').val();
+        $.ajax({
+            url: "@Url.Action("GetCityFromId","Home")",
+            data: {
+                StateId: SelectedState,
+            },
+            type: "post",
+
+            success: function (response) {
+                $('#cityid').find('option').remove();
+
+                $(response).each(function (index, item) {
+                        $("#cityid").append($("<option></option>").val(this['CityID']).html(this['CityName']));
+                    });
+
+                }
+            })
+        });
+    </script>
+
+@* populate values of department dropdown list when college dropdown is selected*@
+<script>
+    $('#collegeid').change(function () {
+        var SelectedCollege = $('#collegeid option:selected').val();
+        $.ajax({
+            url: "@Url.Action("GetDepartmentFromId","Home")",
+            data: {
+                collegeId: SelectedCollege,
+            },
+            type: "post",
+
+            success: function (response) {
+                $('#departmentid').find('option').remove();
+
+                $(response).each(function (index, item) {
+                    $("#departmentid").append($("<option></option>").val(this['DepartmentID']).html(this['DepartmentName']));
+                });
+
+            }
+        })
+    });
+    </script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+@*  *@

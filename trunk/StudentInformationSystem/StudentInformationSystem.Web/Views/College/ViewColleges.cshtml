@@ -1,0 +1,81 @@
+﻿@model IEnumerable<StudentInformationSystem.Entities.ViewModels.CollegeDetailsModel>
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "ViewColleges";
+}
+<style>
+    #sisButton {
+        border: 1px solid;
+    }
+</style>
+
+
+<div class="row">
+    <div class="col-sm-6">
+        <div class="col-sm-12">
+            <h1 style="font-size: 35px">Colleges List</h1>
+        </div>
+    </div>
+</div>
+<br />
+<p>
+    @Html.ActionLink("Create New", "AddCollege", "", new { @class = "btn btn-default", style = "text-decoration:none width:300px", @id = "sisButton"  })
+</p>
+<table class="table table-condensed table-hover table-bordered table-striped">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CollegeCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CollegeName)
+        </th>
+        <th></th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.CollegeCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CollegeName)
+        </td>
+        <td>
+            @Html.ActionLink("Update", "UpdateCollege", new {  id = item.CollegeID }, new { @class = "btn btn-default", style = "text-decoration:none" })
+        </td>
+        <td>
+            @Html.ActionLink("View", "ViewCollege", new { id=item.CollegeID }, new { @class = "btn btn-default", style = "text-decoration:none" })
+        </td>
+    </tr>
+}
+
+</table>
+
+
+<script>
+    $(document).ready(function () {
+        var toastString = '@(TempData["toast"])';
+        debugger
+        if (toastString != "") {
+            displayToastr(toastString);
+        }
+
+    });
+
+    function displayToastr(toastString) {
+        //alert('yes');
+        // Display a info toast, with no title
+        //console.log("edited");
+        //toastr.info(temp)
+
+        // Display a warning toast, with no title
+        //toastr.warning('Hi Mahedee, This the first warning for you!')
+
+        // Display a success toast, with a title
+        toastr.success(toastString)
+
+        // Display an error toast, with a title
+        //toastr.error('An error occured in the solution!', 'Please contact with system administrator.')
+    }
+</script>

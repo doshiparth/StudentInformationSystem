@@ -1,0 +1,68 @@
+﻿@model StudentInformationSystem.Entities.ViewModels.CollegeModel
+
+@{
+    ViewBag.Title = "EditDepartment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    .required:after {
+        content: " *";
+        font-weight: bold;
+        font-size: large;
+        color: red;
+    }
+</style>
+<h2>EditDepartment</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>CollegeModel</legend>
+        <div class="editor-field">
+            @Html.HiddenFor(model => model.CollegeID)
+            @Html.ValidationMessageFor(model => model.CollegeID)
+        </div>
+        <div class="editor-field">
+            @Html.HiddenFor(model => model.DepartmentID)
+            @Html.ValidationMessageFor(model => model.DepartmentID)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DepartmentCode, htmlAttributes: new { @class = "control-label required" })
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.DepartmentCode, new { @class = "form-control", @required = "required", maxlength ="10", minlength="4"})
+            @Html.ValidationMessageFor(model => model.DepartmentCode)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DepartmentName, htmlAttributes: new { @class = "control-label required" })
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.DepartmentName, new { @class = "form-control", @required = "required", maxlength = "99", minlength = "3" })
+            @Html.ValidationMessageFor(model => model.DepartmentName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.TotalSem, htmlAttributes: new { @class = "control-label required" })
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.TotalSem, new { @class = "form-control", @required = "required", @type = "number", min = 1, max = 10, maxlength = "2", minlength = "1" })
+            @Html.ValidationMessageFor(model => model.TotalSem)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+
+    <div class="row">
+         @Html.ActionLink("Back","GetDepartment", "Department","", new { @class = "btn btn-default", @id = "sisButton" })
+                             </div>
+@Html.ValidationMessage("UpdateDepartmentFailedError")
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

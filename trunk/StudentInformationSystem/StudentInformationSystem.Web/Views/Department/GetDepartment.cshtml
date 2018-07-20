@@ -1,0 +1,81 @@
+﻿@model StudentInformationSystem.Entities.ViewModels.CollegeModel
+
+@{
+    ViewBag.Title = "GetDepartment";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    #sisButton {
+        border:1px solid;
+    }
+</style>
+<h2>Department Details </h2>
+
+<fieldset>
+    <legend>CollegeModel</legend>
+    <br>
+    <div class="row">&nbsp&nbsp&nbsp&nbsp
+         @Html.ActionLink("Add Department", "AddDepartment", "Department", "", new { @class = "btn btn-default", @id = "sisButton", style = "text-decoration:none"  })
+                             </div>
+    <br>
+    @using (Html.BeginForm("GetDepartment", "Department", FormMethod.Post))
+{
+    <b><font size="+2">Select College from dropdown to get departments</font></b>
+        <br><br>
+        @*<br> 
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.CollegeName)
+    </div>*@
+    <div class="display-field">
+         @Html.DropDownListFor(model => model.CollegeID, new SelectList(StudentInformationSystem.Entities.HelperModel.College, "Value", "DisplayName"), "Select College" , new { @class = "form-control chosen-select-deselect" ,@id="collegeid" })
+    </div>
+        @*    <input type="submit" value="Ok" />
+    
+            *@
+        <br />
+        <div class="row">
+        @* @Html.ActionLink("Get Department", "GetAllDepartment", "Department", "", new { @class = "btn btn-default", @id = "sisButton" })
+                             </div>*@
+
+            &nbsp&nbsp&nbsp&nbsp <button type ="submit" id="dptbtn" onclick ="demo()">Get Department</button>
+            </div>
+    }
+    
+    
+
+</fieldset>
+
+@*    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |*@
+
+@*    <div class="row">
+         @Html.ActionLink("Back", "StudentInfo", "Home","", new { @class = "btn btn-default", @id = "sisButton", style = "text-decoration:none"  })
+                             </div>*@
+<script src="~/Scripts/jquery-3.0.0.min.js"></script>
+<script >
+    //$("#dptbtn").attr("disabled", true);
+
+  //  $('#collegeid').change(function () {
+    //    $("#dptbtn").removeAttr("disabled");
+    // })
+    $("#dptbtn").click(function () {
+
+        var ddvalue = $('#collegeid').val();
+        debugger;
+        if (ddvalue == "") {
+            alert("Select College First!");
+            return false;
+        }
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        var toastString = '@(TempData["toast"])';
+        debugger
+        if (toastString != "") {
+            displayToastr(toastString);
+        }
+    });
+    function displayToastr(toastString) {
+        toastr.success(toastString)
+    }
+</script>

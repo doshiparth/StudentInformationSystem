@@ -1,0 +1,50 @@
+﻿@model StudentInformationSystem.Entities.ViewModels.CollegeDetailsModel
+
+@{
+    ViewBag.Title = "View College";
+}
+
+<style>
+    #sisButton {
+        border:1px solid;
+        /*float:right*/
+    }
+</style>
+
+<h2>View College</h2>
+<br /><br />
+<fieldset>
+    <legend>CollegeDetailsModel</legend>
+
+    @*<div class="display-label">
+         @Html.DisplayNameFor(model => model.CollegeID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CollegeID)
+    </div>*@
+
+    <div class="row">
+         <div class="col-3">
+         @Html.DisplayNameFor(model => model.CollegeCode)
+    </div>
+        <div class="col-6">
+    
+        @Html.DisplayFor(model => model.CollegeCode)
+    </div>
+    </div>
+
+    <div class="row">
+         <div class="col-3">
+         @Html.DisplayNameFor(model => model.CollegeName)
+    </div>
+        <div class="col-6">
+        @Html.DisplayFor(model => model.CollegeName)
+    </div>
+    </div>
+</fieldset>
+<br /><br />
+<p>
+    @Html.ActionLink("Delete", "DeleteCollege", new { id = Model.CollegeID}, new { @class="btn btn-default", id = "sisButton" , style = "text-decoration:none", @OnClick = "return confirm('Are you sure you want to delete this Record?')"  })
+    @Html.ValidationMessage("DeleteCollegeFailedError");
+    @Html.ActionLink("Back to List", "ViewColleges","", new { @class="btn btn-default", id = "sisButton" , style = "text-decoration:none"  })
+</p>

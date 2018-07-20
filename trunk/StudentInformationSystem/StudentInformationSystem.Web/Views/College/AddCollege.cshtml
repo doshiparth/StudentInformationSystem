@@ -1,0 +1,53 @@
+﻿@model StudentInformationSystem.Entities.ViewModels.CollegeDetailsModel
+
+@{
+    ViewBag.Title = "AddCollege";
+}
+
+<h2>AddCollege</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>CollegeDetailsModel</legend>
+
+        @*<div class="editor-label">
+            @Html.LabelFor(model => model.CollegeID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CollegeID)
+            @Html.ValidationMessageFor(model => model.CollegeID)
+        </div>*@
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CollegeCode, htmlAttributes: new { @class = "control-label required"})
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.CollegeCode, new { required = "required", type = "text", maxlength = "10", minlength = "3"})
+            @Html.ValidationMessageFor(model => model.CollegeCode)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CollegeName, htmlAttributes: new { @class = "control-label required"})
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.CollegeName, new { required = "required" , type="text", maxlength = "100"})
+            @Html.ValidationMessageFor(model => model.CollegeName)
+        </div>
+
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+        @Html.ValidationMessage("AddCollegeFailedError")
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back", "ViewColleges","", new { @class = "btn btn-default", onClick = "openToast()" })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

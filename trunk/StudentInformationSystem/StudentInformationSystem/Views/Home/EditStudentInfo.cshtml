@@ -1,0 +1,131 @@
+﻿@model StudentInformationSystem.Entities.ViewModels.StudentModel
+
+@{
+    ViewBag.Title = "EditStudentInfo";
+}
+
+<h2>EditStudentInfo</h2>
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>StudentModel</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.StudentCode)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.StudentCode)
+            @Html.ValidationMessageFor(model => model.StudentCode)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FirstName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FirstName)
+            @Html.ValidationMessageFor(model => model.FirstName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.LastName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.LastName)
+            @Html.ValidationMessageFor(model => model.LastName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ContactNumber)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ContactNumber)
+            @Html.ValidationMessageFor(model => model.ContactNumber)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EmailAddress)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.EmailAddress)
+            @Html.ValidationMessageFor(model => model.EmailAddress)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DateOfBirth)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DateOfBirth)
+            @Html.ValidationMessageFor(model => model.DateOfBirth)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Address)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Address)
+            @Html.ValidationMessageFor(model => model.Address)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.StateName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.StateName)
+            @Html.ValidationMessageFor(model => model.StateName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CityName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CityName)
+            @Html.ValidationMessageFor(model => model.CityName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DepartmentName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DepartmentName)
+            @Html.ValidationMessageFor(model => model.DepartmentName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CollegeName)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CollegeName)
+            @Html.ValidationMessageFor(model => model.CollegeName)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Semester)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Semester)
+            @Html.ValidationMessageFor(model => model.Semester)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DateOfJoining)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DateOfJoining)
+            @Html.ValidationMessageFor(model => model.DateOfJoining)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@*@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}*@

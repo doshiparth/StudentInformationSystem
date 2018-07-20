@@ -1,0 +1,50 @@
+﻿@model IEnumerable<StudentInformationSystem.Entities.ViewModels.CityModel>
+
+@{
+    ViewBag.Title = "ViewCities";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>View Cities</h2>
+<br />
+@*<p>
+    @Html.ActionLink("Add New City", "AddNewCity","",new { @class="btn btn-default", style = "text-decoration:none"})
+</p>*@
+<table>
+    <tr>
+       @* <th>
+            @Html.DisplayNameFor(model => model.CityID)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.CityName)
+        </th>
+       @* <th>
+            @Html.DisplayNameFor(model => model.StateID)
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+       @* <td>
+            @Html.DisplayFor(modelItem => item.CityID)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.CityName)
+        </td>
+       @* <td>
+            @Html.DisplayFor(modelItem => item.StateID)
+        </td>*@
+        <td>
+            @Html.ActionLink("Edit", "UpdateCity", new { CityID=item.CityID},new { @class="btn btn-default", style = "text-decoration:none"})
+           @* @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
+            @Html.ActionLink("Delete", "DeleteCity", new { CityID=item.CityID} ,new { @class="btn btn-default", style = "text-decoration:none", @OnClick = "return confirm('Are you sure you want to delete this Record?')" })
+        </td>
+    </tr>
+}
+
+</table>
+
+<div>
+    @Html.ActionLink("Back", "ViewStates")
+</div>

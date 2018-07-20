@@ -1,0 +1,180 @@
+﻿@model StudentInformationSystem.Entities.ViewModels.StudentModel
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "View Student List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    #sisButton {
+        border: 1px solid;
+        /*float:right*/
+    }
+
+    .labels {
+        color: grey;
+        width: 150px;
+        display: inline-block;
+    }
+
+    dl {
+        margin-bottom: 20px;
+    }
+
+        dl dt {
+            /*background: #5f9be3;
+            color: #fff;*/
+            float: left;
+            font-weight: bold;
+            margin-right: 15px;
+            padding: 5px;
+            width: 200px;
+        }
+
+        dl dd {
+            margin: 0px 0;
+            padding: 5px 0;
+        }
+</style>
+<h2>@ViewBag.Name's Details</h2>
+
+<fieldset>
+    <legend>StudentModel</legend>
+
+    <br />
+    @Html.ActionLink("View Student's History", "ViewStudentHistory", new { studentId = Model.StudentID }, new { @class = "btn btn-default", id = "sisButton" })
+    <br />
+    <br />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.StudentCode)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StudentCode)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.FullName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.FullName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ContactNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ContactNumber)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailAddress)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EmailAddress)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOfBirth)
+        </dt>
+        <dd>
+            @{var temp = Model.DateOfBirth.ToString("dd MMMM yyyy");}
+            @temp
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.StateName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StateName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CityName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CityName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DepartmentName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.DepartmentName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.CollegeName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.CollegeName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Semester)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Semester)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DateOfJoining)
+        </dt>
+        <dd>
+            @{var temp2 = Model.DateOfJoining.ToString("dd MMMM yyyy");}
+            @temp2
+        </dd>
+    </dl>
+
+    <div class="row">
+        <div class="col-3">
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+
+                    @if (User.IsInRole("Admin"))
+                    {
+                               
+@*<button type="button" class="btn btn-primary" onclick="openModal()">
+                                 <span class="glyphicon glyphicon-save"></span>
+                                    Delete Student
+                            </button>*@
+                        @Html.ActionLink("Delete", "DeleteStudent", new { id = Model.StudentID }, new { @class = "btn btn-default", id = "sisButton", @OnClick = "return confirm('Are you sure you want to delete this Record?')" })
+                        @Html.ValidationMessage("DeleteFailedError")
+                                                                                                                   
+                    }
+
+                    @Html.ActionLink("Back", "StudentInfo", "", new { @class = "btn btn-default", id = "sisButton" })
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Please Confirm</h4>
+                    <button type="button" class="close" style="margin-top: -51px!important" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h3>Are you sure you want to delete this student?</h3>
+                    <p class="text-warning">All the details of this student will be removed from the database</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" onclick="submitForm()">Yes</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</fieldset>
+
+<script type="text/javascript">
+    function openModal() {
+        $("#basicModal").modal();
+    }
+</script>

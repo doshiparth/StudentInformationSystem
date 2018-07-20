@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - My ASP.NET MVC Application</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+
+    @Styles.Render("~/Content/css")
+
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/bootstrapjs")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/toastrjs")
+</head>
+<body>
+    <header>
+        <div class="content-wrapper">
+            <div class="float-left">
+                @if (User.IsInRole("Admin") || User.IsInRole("Staff"))
+                {
+                    <p class="site-title">@Html.ActionLink("SIS", "StudentInfo", "Home")</p>                      
+                }
+            </div>
+            <div class="float-right">
+                <section id="login">
+                    @Html.Partial("_LoginPartial")
+                </section>
+                @if (User.IsInRole("Admin"))
+                {
+                    <nav class="navbar navbar-default navbar-fixed-top">
+                        <div class="container-fluid">
+                            <div class="navbar-header">
+                                <ul id="menu" >
+                                    <li>@Html.ActionLink("Student", "StudentInfo", "Home")</li>
+                                    <li>@Html.ActionLink("Colleges", "ViewColleges", "College")</li>
+                                    <li>@Html.ActionLink("Departments", "GetDepartment", "Department")</li>
+                                    <li>@Html.ActionLink("Cities", "ViewStates", "CityTest")</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </nav>
+                }
+            </div>
+        </div>
+    </header>
+    <div id="body">
+        @RenderSection("featured", required: false)
+        <section class="content-wrapper main-content clear-fix">
+            @RenderBody()
+        </section>
+    </div>
+    @*<footer>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p>&copy; @DateTime.Now.Year - My ASP.NET MVC Application</p>
+                </div>
+            </div>
+        </footer>*@
+
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="084aeaecf4b54addb50d962717b475a4" Name="Diagram1">
+        <EntityTypeShape EntityType="StudentInformationSystemModel.tblCity" Width="1.5" PointX="0.75" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentInformationSystemModel.tblCollege" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentInformationSystemModel.tblDepartment" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentInformationSystemModel.tblException" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentInformationSystemModel.tblRole" Width="1.5" PointX="5.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentInformationSystemModel.tblState" Width="1.5" PointX="1.5" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentInformationSystemModel.tblStudent" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentInformationSystemModel.tblStudentHistory" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentInformationSystemModel.tblUser" Width="1.5" PointX="8" PointY="4.875" IsExpanded="true" />
+        <AssociationConnector Association="StudentInformationSystemModel.FK_tblCity_tblState" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentInformationSystemModel.FK_tblStudent_tblCity" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentInformationSystemModel.FK_tblDepartment_tblCollege" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentInformationSystemModel.FK_tblStudentHistory_tblCollege" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentInformationSystemModel.FK_tblStudentHistory_tblDepartment" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentInformationSystemModel.FK_tblUser_tblRole" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentInformationSystemModel.FK_tblStudentHistory_tblStudent" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

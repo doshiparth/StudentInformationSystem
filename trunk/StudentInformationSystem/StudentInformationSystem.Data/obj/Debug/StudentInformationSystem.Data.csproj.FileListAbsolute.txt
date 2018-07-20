@@ -1,0 +1,14 @@
+E:\Repository1\trunk\StudentInformationSystem\StudentInformationSystem.Data\bin\Debug\EntityFramework.dll
+E:\Repository1\trunk\StudentInformationSystem\StudentInformationSystem.Data\bin\Debug\EntityFramework.SqlServer.dll
+E:\Repository1\trunk\StudentInformationSystem\StudentInformationSystem.Data\bin\Debug\StudentInformationSystem.Common.dll
+E:\Repository1\trunk\StudentInformationSystem\StudentInformationSystem.Data\bin\Debug\StudentInformationSystem.Entities.dll
+E:\Repository1\trunk\StudentInformationSystem\StudentInformationSystem.Data\bin\Debug\StudentInformationSystem.Common.pdb
+E:\Repository1\trunk\StudentInformationSystem\StudentInformationSystem.Data\bin\Debug\StudentInformationSystem.Entities.pdb
+E:\Repository1\trunk\StudentInformationSystem\StudentInformationSystem.Data\bin\Debug\EntityFramework.xml
+E:\Repository1\trunk\StudentInformationSystem\StudentInformationSystem.Data\bin\Debug\EntityFramework.SqlServer.xml
+E:\Repository1\trunk\StudentInformationSystem\StudentInformationSystem.Data\obj\Debug\StudentInformationSystem.Data.csprojResolveAssemblyReference.cache
+E:\Repository1\trunk\StudentInformationSystem\StudentInformationSystem.Data\obj\Debug\StudentInformationSystem.Data.dll
+E:\Repository1\trunk\StudentInformationSystem\StudentInformationSystem.Data\obj\Debug\StudentInformationSystem.Data.pdb
+E:\Repository1\trunk\StudentInformationSystem\StudentInformationSystem.Data\bin\Debug\StudentInformationSystem.Data.dll.config
+E:\Repository1\trunk\StudentInformationSystem\StudentInformationSystem.Data\bin\Debug\StudentInformationSystem.Data.dll
+E:\Repository1\trunk\StudentInformationSystem\StudentInformationSystem.Data\bin\Debug\StudentInformationSystem.Data.pdb

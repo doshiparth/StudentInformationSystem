@@ -1,0 +1,99 @@
+﻿@model IEnumerable<StudentInformationSystem.Entities.ViewModels.StudentInfoModel>
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "StudentInfo";
+    Layout = "~/Views/Shared/_Layout.cshtml"; 
+}
+
+<style>
+    #sisButton {
+        border: 1px solid;
+    }
+</style>
+
+<div class="row">
+    <div class="col-sm-6">
+        <div class="col-sm-12">
+            <h1 style="font-size: 35px">Students List</h1>
+        </div>
+    </div>
+</div>
+<br />
+@Html.ActionLink("Add new Student", "AddStudentInfo", "", new { @class = "btn btn-default", @id = "sisButton" })
+<br />
+
+<table class="table table-condensed table-bordered table-striped table-hover" style="text-align: center">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FullName)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.ContactNumber)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.EmailAddress)
+        </th>
+        
+        <th></th>
+        
+        @if (User.IsInRole("Admin"))
+        {
+            <th></th>
+        }
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContactNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmailAddress)
+            </td>
+            <td>
+                @Html.ActionLink("View", "ViewStudentInfo", new { id = item.StudentID }, new { @class = "btn btn-default" })
+            </td>
+            @*@if (Session["Role"] == "Admin")*@
+            @if (User.IsInRole("Admin"))
+            {
+                <td>
+                    @Html.ActionLink("Edit", "EditStudentInfo", new { id = item.StudentID }, new { @class = "btn btn-default" })
+                </td>
+            }
+        </tr>
+    }
+
+</table>
+
+<script>
+    $(document).ready(function () {
+        var toastString = '@(TempData["toast"])';
+        debugger
+        if (toastString != "") {
+            displayToastr(toastString);
+        }
+
+    });
+
+    function displayToastr(toastString) {
+        //alert('yes');
+        // Display a info toast, with no title
+        //console.log("edited");
+        //toastr.info(temp)
+
+        // Display a warning toast, with no title
+        //toastr.warning('Hi Mahedee, This the first warning for you!')
+
+        // Display a success toast, with a title
+        toastr.success(toastString)
+
+        // Display an error toast, with a title
+        //toastr.error('An error occured in the solution!', 'Please contact with system administrator.')
+    }
+</script>

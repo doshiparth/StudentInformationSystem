@@ -1,0 +1,7 @@
+E:\Repository1\trunk\StudentInformationSystem\StudentInformationSystem.Common\bin\Debug\StudentInformationSystem.Common.dll
+E:\Repository1\trunk\StudentInformationSystem\StudentInformationSystem.Common\bin\Debug\StudentInformationSystem.Common.pdb
+E:\Repository1\trunk\StudentInformationSystem\StudentInformationSystem.Common\bin\Debug\StudentInformationSystem.Entities.dll
+E:\Repository1\trunk\StudentInformationSystem\StudentInformationSystem.Common\bin\Debug\StudentInformationSystem.Entities.pdb
+E:\Repository1\trunk\StudentInformationSystem\StudentInformationSystem.Common\obj\Debug\StudentInformationSystem.Common.csprojResolveAssemblyReference.cache
+E:\Repository1\trunk\StudentInformationSystem\StudentInformationSystem.Common\obj\Debug\StudentInformationSystem.Common.dll
+E:\Repository1\trunk\StudentInformationSystem\StudentInformationSystem.Common\obj\Debug\StudentInformationSystem.Common.pdb

@@ -1,0 +1,55 @@
+﻿@model StudentInformationSystem.Entities.ViewModels.CollegeDetailsModel
+
+@{
+    ViewBag.Title = "Update College";
+}
+
+<h2>Update College</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Update College</legend>
+
+        @*<div class="editor-label">
+            @Html.LabelFor(model => model.CollegeID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CollegeID)
+            @Html.ValidationMessageFor(model => model.CollegeID)
+        </div>*@
+
+        @Html.HiddenFor(model => model.CollegeID);
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CollegeCode, htmlAttributes: new { @class = "control-label required"})
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CollegeCode, new { required = "required", type = "text", maxlength = "10", minlength = "3"})
+            @Html.ValidationMessageFor(model => model.CollegeCode)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CollegeName, htmlAttributes: new { @class = "control-label required"})
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CollegeName, new { required = "required" , type="text", maxlength = "100"})
+            @Html.ValidationMessageFor(model => model.CollegeName)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+            @Html.ValidationMessage("UpdateCollegeFailedError")
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "ViewColleges")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
